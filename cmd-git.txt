@@ -1,0 +1,6 @@
+git branch -M main
+git add.
+git commit -m "create project"
+git config --global init.defaultBranch main
+git remote add origin git@github.com:agnaldopidev/api-django-rest-framerwork.git
+git push -u origin main
