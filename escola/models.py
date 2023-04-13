@@ -10,7 +10,6 @@ class Aluno(models.Model):
     def __str__(self):
         return self.nome
 
-
 # Modelo de curso
 class Curso(models.Model):
     
@@ -26,4 +25,17 @@ class Curso(models.Model):
     
     def __str__(self):
         return self.descricao
+
+# Modelo de Matricula
+class Matricula(models.Model):
     
+    PERIODO = (
+        ('M','Matutino'),
+        ('V','Verpertino'),
+        ('N','Noturno'),
+    )
+    
+    codigo_matricula = models.CharField(max_length=8)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    periodo = models.CharField(max_length=1,choices=PERIODO, blank=False, null=False, default='M')
